@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>контакты и шоурум — Подоконник</title>
+  <meta name="description" content="Контакты магазина комнатных растений «Подоконник»: адрес шоурума, телефон, часы работы и форма обратной связи.">
+  <meta name="theme-color" content="#2F6B3F">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Подоконник">
+  <meta property="og:title" content="контакты и шоурум — Подоконник">
+  <meta property="og:description" content="Контакты магазина комнатных растений «Подоконник»: адрес шоурума, телефон, часы работы и форма обратной связи.">
+  <meta property="og:image" content="images/og-image.jpg">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;family=Unbounded:wght@500;600&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+<header class="site-header" id="top">
+  <div class="site-header__inner container">
+    <a class="logo site-header__logo" href="index.html"><svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M6 36V17a14 14 0 0 1 28 0v19Z" fill="#E3EEDF" stroke="currentColor" stroke-width="3"/><path d="M20 34V22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M20 25c-5 0-8-3-8-7 5 0 8 3 8 7Zm0-3c0-4 3-7 8-7 0 4-3 7-8 7Z" fill="#2F6B3F"/><path d="M3 36h34" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span class="logo__text">Подоконник</span><span class="visually-hidden"> — на главную</span></a>
+    <button class="menu-toggle site-header__toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-toggle__icon" aria-hidden="true"></span>
+      <span class="menu-toggle__label">Меню</span>
+    </button>
+    <nav class="site-nav site-header__nav" id="site-nav" aria-label="Основная навигация">
+      <ul class="site-nav__list">
+        <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li><li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li><li class="site-nav__item"><a class="site-nav__link" href="care.html">Уход</a></li><li class="site-nav__item"><a class="site-nav__link" href="order.html">Оформить заказ</a></li><li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="contacts.html" aria-current="page">Контакты</a></li>
+      </ul>
+    </nav>
+    <a class="site-header__phone" href="tel:+74955550123">+7 (495) 555-01-23</a>
+  </div>
+</header>
+<nav class="breadcrumbs container" aria-label="Хлебные крошки"><ol class="breadcrumbs__list"><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="index.html">Главная</a></li><li class="breadcrumbs__item"><span class="breadcrumbs__current" aria-current="page">Контакты</span></li></ol></nav>
+<main class="main" id="main">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-header__title">Контакты</h1>
+      <p class="page-header__text">Приходите в шоурум выбрать растение вживую или задайте вопрос через форму.</p>
+    </header>
+    <div class="contacts">
+      <section class="contacts__info" aria-labelledby="showroom-title">
+        <h2 class="contacts__title" id="showroom-title">Шоурум у Белорусской</h2>
+        <address class="contacts__address">
+          <dl class="contacts__list">
+            <div class="contacts__row"><dt>Адрес</dt><dd>Москва, ул. Большая Грузинская, 12</dd></div>
+            <div class="contacts__row"><dt>Метро</dt><dd>«Белорусская», 7 минут пешком</dd></div>
+            <div class="contacts__row"><dt>Телефон</dt><dd><a href="tel:+74955550123">+7 (495) 555-01-23</a></dd></div>
+            <div class="contacts__row"><dt>E-mail</dt><dd><a href="mailto:hello@podokonnik.example">hello@podokonnik.example</a></dd></div>
+            <div class="contacts__row"><dt>Часы работы</dt><dd>Ежедневно, 10:00–21:00</dd></div>
+          </dl>
+        </address>
+        <div class="contacts__note">
+          <h3 class="contacts__subtitle">Растение заболело?</h3>
+          <p>Пришлите фото листьев и горшка на почту или в форму. Специалист ответит в течение рабочего дня.</p>
+          <a class="button button--secondary" href="care.html#faq">Частые проблемы</a>
+        </div>
+      </section>
+      <section class="contacts__form-wrap" aria-labelledby="feedback-title">
+        <h2 class="contacts__title" id="feedback-title">Обратная связь</h2>
+        <form class="order-form" id="feedback-form" action="#" method="post" novalidate>
+          <div class="order-form__field">
+            <label class="order-form__label" for="fb-name">Имя <span class="order-form__required" aria-hidden="true">*</span></label>
+            <input class="order-form__input" id="fb-name" name="name" type="text" minlength="2" autocomplete="name" required aria-describedby="fb-name-error">
+            <p class="order-form__error" id="fb-name-error"></p>
+          </div>
+          <div class="order-form__field">
+            <label class="order-form__label" for="fb-email">E-mail <span class="order-form__required" aria-hidden="true">*</span></label>
+            <input class="order-form__input" id="fb-email" name="email" type="email" autocomplete="email" placeholder="example@mail.ru" required aria-describedby="fb-email-error">
+            <p class="order-form__error" id="fb-email-error"></p>
+          </div>
+          <div class="order-form__field">
+            <label class="order-form__label" for="fb-topic">Тема <span class="order-form__required" aria-hidden="true">*</span></label>
+            <select class="order-form__input order-form__select" id="fb-topic" name="topic" required aria-describedby="fb-topic-error">
+              <option value="">Выберите тему</option>
+              <option value="choose">Помощь с выбором растения</option>
+              <option value="care">Вопрос по уходу</option>
+              <option value="order">Вопрос по заказу</option>
+              <option value="other">Другое</option>
+            </select>
+            <p class="order-form__error" id="fb-topic-error"></p>
+          </div>
+          <div class="order-form__field">
+            <label class="order-form__label" for="fb-message">Сообщение <span class="order-form__required" aria-hidden="true">*</span></label>
+            <textarea class="order-form__input order-form__textarea" id="fb-message" name="message" rows="5" minlength="10" maxlength="1000" required aria-describedby="fb-message-error"></textarea>
+            <p class="order-form__error" id="fb-message-error"></p>
+          </div>
+          <div class="order-form__field order-form__field--checkbox">
+            <input class="order-form__checkbox" id="fb-agreement" name="agreement" type="checkbox" required aria-describedby="fb-agreement-error">
+            <label class="order-form__label order-form__label--inline" for="fb-agreement">Согласен на обработку персональных данных <span class="order-form__required" aria-hidden="true">*</span></label>
+            <p class="order-form__error" id="fb-agreement-error"></p>
+          </div>
+          <div class="order-form__actions">
+            <button class="button button--primary" type="submit">Отправить сообщение</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner container">
+    <section class="site-footer__col site-footer__col--about" aria-labelledby="footer-about">
+      <h2 class="site-footer__title" id="footer-about">Подоконник</h2>
+      <p class="site-footer__text">Комнатные растения с доставкой по Москве. Привозим в горшке, объясняем уход и помогаем, если растению стало плохо.</p>
+    </section>
+    <nav class="site-footer__col" aria-labelledby="footer-nav">
+      <h2 class="site-footer__title" id="footer-nav">Разделы</h2>
+      <ul class="site-footer__list">
+        <li><a class="site-footer__link" href="catalog.html">Каталог</a></li>
+        <li><a class="site-footer__link" href="care.html">Уход за растениями</a></li>
+        <li><a class="site-footer__link" href="order.html">Оформить заказ</a></li>
+        <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+    <section class="site-footer__col" aria-labelledby="footer-contacts">
+      <h2 class="site-footer__title" id="footer-contacts">Связаться</h2>
+      <address class="site-footer__address">
+        <a class="site-footer__link" href="tel:+74955550123">+7 (495) 555-01-23</a><br>
+        <a class="site-footer__link" href="mailto:hello@podokonnik.example">hello@podokonnik.example</a><br>
+        Москва, ул. Большая Грузинская, 12
+      </address>
+    </section>
+    <section class="site-footer__col" aria-labelledby="footer-hours">
+      <h2 class="site-footer__title" id="footer-hours">Шоурум</h2>
+      <p class="site-footer__text">Ежедневно с 10:00 до 21:00. Доставка с 9:00 до 22:00.</p>
+    </section>
+  </div>
+  <div class="site-footer__bottom container">
+    <p>© 2026 Подоконник. Учебный проект по дисциплине «Фронтенд и бэкенд разработка».</p>
+    <p>Выполнил: Мальцев Кирилл, группа 5692</p>
+  </div>
+</footer>
+<a class="to-top" href="#top"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5 5 12m7-7 7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden">Наверх</span></a>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden>
+  <p class="toast__text" id="toast-text">Заявка отправлена. Мы перезвоним в течение 15 минут.</p>
+</div>
+</body>
+</html>
