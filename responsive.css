@@ -1,0 +1,447 @@
+/*
+  responsive.css — адаптивная вёрстка проекта «Подоконник».
+  Подключается после style.css, поэтому переопределяет базовые (мобильные) стили.
+
+  Подход Mobile First: базовые стили рассчитаны на телефон,
+  а медиазапросы min-width постепенно добавляют колонки и отступы.
+
+  Контрольные точки:
+  до 359px    — очень узкие телефоны (max-width, точечные исправления)
+  480px       — большие телефоны: 2 колонки карточек
+  768px       — планшет: горизонтальное меню, 3 колонки, 2 колонки на товаре
+  1024px      — ноутбук: боковые фильтры, 4 колонки на главной
+  1280px      — широкий desktop: крупная типографика
+*/
+
+/* ===== Очень узкие экраны (до 359px) ===== */
+@media (max-width: 359px) {
+  :root {
+    --gutter: 12px;
+  }
+
+  .logo__text {
+    font-size: 1rem;
+  }
+
+  /* На 320px подпись «Меню» не помещается рядом с логотипом */
+  .menu-toggle__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .hero__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .table--stack th,
+  .table--stack td {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* ===== Большие телефоны (от 480px) ===== */
+@media (min-width: 480px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Карточка становится вертикальной */
+  .product-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-card__media {
+    padding-bottom: 0;
+  }
+
+  .product-card__body {
+    padding: var(--space-md);
+  }
+
+  .product-card__badge {
+    max-width: none;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .order-form__actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .product__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .product__actions .button {
+    flex: 1 1 180px;
+  }
+
+  .toast {
+    left: auto;
+    max-width: 420px;
+  }
+
+  .seasons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ===== Планшеты (от 768px) ===== */
+@media (min-width: 768px) {
+  :root {
+    --title-xl: 2.25rem;
+    --title-lg: 1.625rem;
+    --title-md: 1.25rem;
+    --section-gap: 64px;
+    --gutter: 24px;
+    --header-height: 72px;
+  }
+
+  /* Меню становится горизонтальным, кнопка «Меню» скрывается */
+  .js .menu-toggle {
+    display: none;
+  }
+
+  .site-nav,
+  .js .site-nav {
+    position: static;
+    display: block;
+    flex-basis: auto;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .site-nav__list,
+  html:not(.js) .site-nav__list {
+    flex-direction: row;
+    gap: var(--space-xs);
+  }
+
+  .site-nav__link {
+    padding-inline: 12px;
+  }
+
+  .site-nav__link--active {
+    box-shadow: inset 0 -3px 0 var(--color-primary);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  html:not(.js) .site-header__inner {
+    flex-wrap: nowrap;
+    padding-bottom: 0;
+  }
+
+  /* Hero: текст слева, картинка справа — именованные области Grid */
+  .hero {
+    padding-top: var(--space-xl);
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-areas: "content picture";
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .benefits__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .pick__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pick-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pick-card__link {
+    margin-top: auto;
+  }
+
+  .reviews__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .steps__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  /* Товар: галерея и информация в две колонки */
+  .product {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "gallery info"
+      "nav nav";
+    column-gap: var(--space-xl);
+  }
+
+  .product__info {
+    align-self: start;
+  }
+
+  .gallery__main .gallery__image {
+    border-radius: var(--radius-arch);
+  }
+
+  /* Формы: пары полей встают в одну строку */
+  .order-form__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-form__group {
+    padding: var(--space-lg);
+  }
+
+  .order-dialog {
+    padding: var(--space-xl);
+  }
+
+  .contacts {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .contacts__row {
+    grid-template-columns: 9em 1fr;
+    gap: var(--space-md);
+  }
+
+  .site-footer__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* Таблица ухода снова становится обычной таблицей, но в прокручиваемом контейнере */
+  .table--stack {
+    display: table;
+    min-width: 720px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+  }
+
+  .table--stack thead {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    display: table-header-group;
+  }
+
+  .table--stack tbody { display: table-row-group; }
+  .table--stack tr { display: table-row; margin: 0; padding: 0; border: 0; border-radius: 0; }
+
+  .table--stack th,
+  .table--stack td {
+    display: table-cell;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .table--stack th::before,
+  .table--stack td::before {
+    content: none;
+  }
+
+  .table--stack .table__caption {
+    display: table-caption;
+    padding-inline: 0;
+  }
+
+  .table--stack tr td:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .table--stack tbody tr:last-child th,
+  .table--stack tbody tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+/* ===== Ноутбуки и desktop (от 1024px) ===== */
+@media (min-width: 1024px) {
+  :root {
+    --title-xl: 2.75rem;
+    --section-gap: 80px;
+  }
+
+  .site-header__phone {
+    display: inline-block;
+  }
+
+  .site-nav__list {
+    gap: var(--space-sm);
+  }
+
+  .benefits__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .products-grid--home {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Главная: шаги и блок aside рядом */
+  .page-columns {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  /* Каталог: sticky-фильтры слева, товары справа */
+  .catalog {
+    grid-template-columns: 260px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-xl);
+  }
+
+  .catalog__filters {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-md));
+    max-height: calc(100vh - var(--header-height) - var(--space-xl));
+    overflow-y: auto;
+  }
+
+  .js .filters__toggle {
+    display: none;
+  }
+
+  .js .filters__form {
+    display: block;
+  }
+
+  .filters__option {
+    min-height: 34px;
+  }
+
+  .filters__group {
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-sm);
+  }
+
+  /* На странице товара блок покупки прилипает при прокрутке галереи */
+  .product {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    grid-template-areas: none;
+  }
+
+  .product__gallery,
+  .product__nav,
+  .product__section {
+    grid-column: 1;
+  }
+
+  /* Правая колонка занимает все строки, поэтому sticky работает до конца статьи */
+  .product__info {
+    grid-column: 2;
+    grid-row: 1 / span 6;
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-md));
+  }
+
+  /* Оформление заказа: форма + прилипающая сводка */
+  .order-layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    align-items: start;
+    gap: var(--space-xl);
+  }
+
+  .order-summary {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-md));
+  }
+
+  .contacts {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .seasons {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .site-footer__inner {
+    grid-template-columns: 1.4fr 1fr 1.2fr 1fr;
+  }
+
+  .to-top {
+    right: var(--space-xl);
+    bottom: var(--space-xl);
+  }
+}
+
+/* ===== Широкий desktop (от 1280px) ===== */
+@media (min-width: 1280px) {
+  :root {
+    --title-xl: 3.25rem;
+    --title-lg: 1.875rem;
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+}
+
+/* ===== Устройства с мышью: эффекты наведения не «залипают» на тач-экранах ===== */
+@media (hover: hover) {
+  .product-card:hover .product-card__image {
+    filter: saturate(1.08);
+  }
+}
+
+/* ===== Пользователь попросил меньше анимации ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Печать: без навигации и кнопок ===== */
+@media print {
+  .site-header,
+  .site-footer,
+  .to-top,
+  .filters,
+  .order-dialog,
+  .breadcrumbs,
+  .button {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+}
