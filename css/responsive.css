@@ -225,6 +225,11 @@
     gap: var(--space-md);
   }
 
+  /* На планшете и desktop карта шире и ниже */
+  .map__frame {
+    aspect-ratio: 16 / 7;
+  }
+
   .site-footer__inner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
