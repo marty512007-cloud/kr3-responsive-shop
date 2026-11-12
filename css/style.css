@@ -38,6 +38,11 @@
   --color-border: #CBD6C8;
   --color-white: #FFFFFF;
   --color-focus: #B45309;
+  --color-on-primary: #FFFFFF;
+  --color-header-bg: rgba(245, 248, 243, 0.96);
+  --color-input-bg: #FFFFFF;
+  --color-input-border: #8A988E;
+  --color-footer-bg: #1E4D2B;
 
   /* Шрифты */
   --font-display: "Unbounded", "Arial Black", "Segoe UI", sans-serif;
@@ -77,6 +82,55 @@
   --z-menu: 110;
   --z-fixed: 90;
   --z-toast: 200;
+}
+
+/*
+  Тёмная тема. Включается автоматически, если в системе (macOS, Windows,
+  Android, iOS) выбрано тёмное оформление. Меняются только значения
+  переменных — все компоненты подхватывают новые цвета сами.
+  Контраст текста в тёмной теме тоже не ниже 4.5:1.
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark; /* тёмные полосы прокрутки, календарь, чекбоксы */
+
+    --color-bg: #111814;
+    --color-surface: #19231D;
+    --color-surface-accent: #1F2D24;
+    --color-text: #E4ECE6;
+    --color-muted: #A6B5AA;
+    --color-primary: #7CC48E;
+    --color-primary-dark: #A3D9B0;
+    --color-primary-light: #25402E;
+    --color-sky: #1B2B31;
+    --color-success: #8FD3A1;
+    --color-success-bg: #1D3626;
+    --color-border: #2F3E34;
+    --color-focus: #F0A54A;
+    --color-on-primary: #0E1912;
+    --color-header-bg: rgba(17, 24, 20, 0.95);
+    --color-input-bg: #111814;
+    --color-input-border: #5E6E63;
+    --color-footer-bg: #0B110D;
+    --shadow-raised: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Стрелка выпадающего списка: светлая на тёмном поле */
+  .order-form__select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6' fill='none' stroke='%23E4ECE6' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  /* Светлые иллюстрации выглядят аккуратнее в скруглённой рамке */
+  .hero__image {
+    border-radius: var(--radius-lg);
+  }
+
+  /* Картинки чуть приглушаем, чтобы не слепили на тёмном фоне */
+  .product-card__image,
+  .gallery__image,
+  .hero__image {
+    filter: brightness(0.92);
+  }
 }
 
 /* ========== 2. Сброс и базовые стили ========== */
@@ -205,7 +259,7 @@ button {
   left: var(--space-sm);
   z-index: calc(var(--z-header) + 20);
   padding: var(--space-sm) var(--space-md);
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary-dark);
   border-radius: var(--radius-sm);
   transform: translateY(-200%);
@@ -283,12 +337,12 @@ button {
 }
 
 .button--primary {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
 }
 
 .button--primary:hover {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary-dark);
 }
 
@@ -321,7 +375,7 @@ button {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background-color: rgba(245, 248, 243, 0.96);
+  background-color: var(--color-header-bg);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -816,12 +870,13 @@ html:not(.js) .site-nav__list {
   padding: 4px 12px;
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary-dark);
   border-radius: 999px;
 }
 
 .product-card--discount .product-card__badge {
+  color: #FFFFFF;
   background-color: var(--color-danger);
 }
 
@@ -1141,13 +1196,13 @@ html:not(.js) .site-nav__list {
 }
 
 .pagination__link--active {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   border-color: var(--color-primary);
 }
 
 .pagination__link--active:hover {
-  color: var(--color-white);
+  color: var(--color-on-primary);
 }
 
 .pagination__link--disabled {
@@ -1221,12 +1276,12 @@ html:not(.js) .site-nav__list {
   padding: 4px 12px;
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary-dark);
   border-radius: 999px;
 }
 
-.product__badge--discount { background-color: var(--color-danger); }
+.product__badge--discount { color: #FFFFFF; background-color: var(--color-danger); }
 .product__badge--new { color: var(--color-text); background-color: var(--color-sun); }
 
 .product__category {
@@ -1532,8 +1587,8 @@ html:not(.js) .site-nav__list {
   width: 100%;
   min-height: 48px;
   padding: 10px 14px;
-  background-color: var(--color-white);
-  border: 1px solid #8A988E;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
   border-radius: var(--radius-sm);
   transition: border-color var(--transition), box-shadow var(--transition);
 }
@@ -1642,8 +1697,8 @@ html:not(.js) .site-nav__list {
   padding: 8px 12px;
   font-weight: 600;
   text-align: center;
-  background-color: var(--color-white);
-  border: 1px solid #8A988E;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
   border-radius: var(--radius-sm);
   cursor: pointer;
 }
@@ -1887,7 +1942,7 @@ html:not(.js) .site-nav__list {
 .site-footer {
   padding-top: var(--section-gap);
   color: #E8EFE6;
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-footer-bg);
 }
 
 .site-footer__inner {
@@ -1955,7 +2010,7 @@ html:not(.js) .site-nav__list {
   place-items: center;
   width: 48px;
   height: 48px;
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   border-radius: 50%;
   box-shadow: var(--shadow-raised);
@@ -1963,7 +2018,7 @@ html:not(.js) .site-nav__list {
 }
 
 .to-top:hover {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary-dark);
 }
 
