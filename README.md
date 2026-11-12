@@ -107,10 +107,10 @@ python -m http.server 8000
 
 | Показатель     | Результат |
 | -------------- | --------- |
-| Performance    | __        |
-| Accessibility  | __        |
-| Best Practices | __        |
-| SEO            | __        |
+| Performance    | 99        |
+| Accessibility  | 100       |
+| Best Practices | 100       |
+| SEO            | 100       |
 
 ## CSS-архитектура
 
